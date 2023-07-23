@@ -5,6 +5,7 @@ import { StatusController } from '../app/controllers';
 import { User } from '../app/data/models';
 import { UserRepository } from '../app/data/repositories';
 import { appRouter, statusRoutes } from '../app/routes';
+import { UserService } from '../app/services';
 import { Server } from '../server';
 
 const container = createContainer();
@@ -28,6 +29,9 @@ container
   })
   .register({
     UserRepository: asClass(UserRepository).singleton(),
+  })
+  .register({
+    UserService: asClass(UserService).singleton(),
   });
 
 export { container };
