@@ -4,7 +4,7 @@ import { config } from '.';
 import { StatusController, UserController } from '../app/controllers';
 import { User } from '../app/data/models';
 import { UserRepository } from '../app/data/repositories';
-import { appRouter, statusRoutes } from '../app/routes';
+import { appRouter, statusRoutes, userRoutes } from '../app/routes';
 import { UserService } from '../app/services';
 import { Server } from '../server';
 
@@ -18,6 +18,7 @@ container
   })
   .register({
     StatusRoutes: asFunction(statusRoutes).singleton(),
+    UserRoutes: asFunction(userRoutes).singleton(),
   })
   .register({
     StatusController: asClass(
