@@ -5,8 +5,8 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import 'express-async-errors';
 
+import { errorMiddleware, notFoundMiddleware } from './app/middlewares';
 import { dbConnection } from './config/db';
-import { notFoundMiddleware } from './app/middlewares';
 
 type IoCServer = {
   config: {
@@ -46,7 +46,7 @@ export class Server {
 
   finalMiddlewares() {
     this.app.use(notFoundMiddleware);
-    // this.app.use(errorMiddleware);
+    this.app.use(errorMiddleware);
   }
 
   listen() {
