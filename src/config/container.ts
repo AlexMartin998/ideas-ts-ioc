@@ -2,6 +2,7 @@ import { asClass, asFunction, asValue, createContainer } from 'awilix';
 
 import { config } from '.';
 import { StatusController } from '../app/controllers';
+import { User } from '../app/data/models';
 import { appRouter, statusRoutes } from '../app/routes';
 import { Server } from '../server';
 
@@ -20,6 +21,9 @@ container
     StatusController: asClass(
       StatusController.bind(StatusController)
     ).singleton(),
+  })
+  .register({
+    User: asValue(User),
   });
 /* .register({
     HomeService: asClass(HomeService).singleton(),
