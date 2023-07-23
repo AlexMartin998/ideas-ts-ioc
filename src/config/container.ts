@@ -3,6 +3,7 @@ import { asClass, asFunction, asValue, createContainer } from 'awilix';
 import { config } from '.';
 import { StatusController } from '../app/controllers';
 import { User } from '../app/data/models';
+import { UserRepository } from '../app/data/repositories';
 import { appRouter, statusRoutes } from '../app/routes';
 import { Server } from '../server';
 
@@ -24,10 +25,9 @@ container
   })
   .register({
     User: asValue(User),
-  });
-/* .register({
-    HomeService: asClass(HomeService).singleton(),
   })
-*/
+  .register({
+    UserRepository: asClass(UserRepository).singleton(),
+  });
 
 export { container };
