@@ -14,4 +14,6 @@ export const config = {
   DB_PASSWORD: process.env.DB_PASSWORD || '',
   DB_PORT: Number(process.env.DB_PORT) || 3306,
   DB_DIALECT: (process.env.DB_DIALECT as Dialect) || ('mysql' as Dialect),
+
+  JWT_SECRET: process.env.JWT_SECRET || '',
 };
