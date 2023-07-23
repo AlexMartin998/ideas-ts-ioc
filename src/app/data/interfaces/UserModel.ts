@@ -21,4 +21,7 @@ export interface UserModel
   // timestamps
   created_at?: CreationOptional<Date>;
   updated_at?: CreationOptional<Date>;
+
+  // methods
+  comparePassword?(password: string): boolean;
 }

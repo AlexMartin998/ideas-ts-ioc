@@ -1,4 +1,5 @@
 import { DataTypes } from 'sequelize';
+import bcryptjs from 'bcryptjs';
 
 import { db } from '../../../config/db';
 import { UserModel } from '../interfaces';
@@ -25,7 +26,27 @@ const User = db.define<UserModel>(
       unique: true,
     },
   },
-  { timestamps: true, underscored: true }
+  {
+    timestamps: true,
+    underscored: true,
+    hooks: {
+      beforeCreate: async function (user) {
+        user.password = await bcryptjs.hash(user.password, 10);
+      },
+    },
+    scopes: {
+      removePassword: {
+        attributes: {
+          exclude: ['password', 'token', 'created_at', 'updated_at'],
+        },
+      },
+    },
+  }
 );
+
+// Custom methods
+User.prototype.comparePassword = async function (password: string) {
+  return await bcryptjs.compare(password, this.password);
+};
 
 export default User;
