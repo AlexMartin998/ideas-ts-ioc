@@ -17,10 +17,7 @@ export class UserService
     this.userRepository = UserRepository;
   }
 
-  async findOneByEmail(email: string): Promise<UserModel> {
-    const user = await this.userRepository.findOneByEmail(email);
-    if (!user) throw new Error(`User with email '${email}' not found`);
-
-    return user;
+  async findOneByEmail(email: string): Promise<UserModel | null> {
+    return this.userRepository.findOneByEmail(email);
   }
 }
