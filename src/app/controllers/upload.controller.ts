@@ -16,7 +16,6 @@ export class UploadController {
 
   async saveInLocal(req: Request, res: Response) {
     const { file } = req;
-    console.log({ file });
 
     return res.status(201).json({ file_name: file?.filename });
   }

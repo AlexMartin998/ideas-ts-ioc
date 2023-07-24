@@ -1,6 +1,7 @@
 import multer from 'multer';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
+import { BadRequestException } from '../../exceptions';
 
 const storage = multer.diskStorage({
   destination: path.join(__dirname, './../../../public/uploads'),
@@ -18,6 +19,6 @@ export const uploadFiles = multer({
     const extName = fileTypes.test(path.extname(file.originalname));
 
     if (mimetype && extName) return cb(null, true);
-    cb(new Error('Invalid file'));
+    cb(new BadRequestException('Invalid file'));
   },
 });
