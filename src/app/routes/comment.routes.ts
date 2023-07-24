@@ -9,7 +9,7 @@ type UsersRoutesIoC = {
 export default function ({ CommentController }: UsersRoutesIoC) {
   const router = Router();
 
-  router.get('/:authorId/all', CommentController.findAllByAuthor);
+  router.get('/ideas/:ideaId', CommentController.findAllByIdea);
   router.get('/:id', CommentController.findOne);
   router.post('/', CommentController.create);
   router.patch('/:id', CommentController.update);

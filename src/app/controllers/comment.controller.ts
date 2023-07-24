@@ -5,12 +5,12 @@ import { ICommentService } from '../services/interfaces';
 let _commentService: ICommentService;
 
 type CommentControllerIoC = {
-  IdeaService: ICommentService;
+  CommentService: ICommentService;
 };
 
 export class CommentController {
-  constructor({ IdeaService }: CommentControllerIoC) {
-    _commentService = IdeaService;
+  constructor({ CommentService }: CommentControllerIoC) {
+    _commentService = CommentService;
   }
 
   async create(req: Request, res: Response) {

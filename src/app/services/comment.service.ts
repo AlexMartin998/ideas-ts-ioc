@@ -1,7 +1,8 @@
+import { NotFoundException } from '../../exceptions';
 import {
-  ICommentRepository,
-  CommentModel,
   CommentDto,
+  CommentModel,
+  ICommentRepository,
 } from '../data/interfaces';
 import { BaseService } from './base.service';
 import { ICommentService, IIdeaService } from './interfaces';
@@ -35,6 +36,14 @@ export class CommentService
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return this.repository.create(commentBody as any);
+  }
+
+  async findOne(id: number) {
+    const comment = await this.repository.findOne(id);
+    if (!comment)
+      throw new NotFoundException(`Comment with id ${id} not found`);
+
+    return comment;
   }
 
   async findAllByIdea(ideaId: number): Promise<CommentModel[]> {

@@ -17,6 +17,7 @@ import {
 import {
   appRouter,
   authRoutes,
+  commentRoutes,
   ideaRoutes,
   statusRoutes,
   userRoutes,
@@ -42,6 +43,7 @@ container
     UserRoutes: asFunction(userRoutes).singleton(),
     AuthRoutes: asFunction(authRoutes).singleton(),
     IdeaRoutes: asFunction(ideaRoutes).singleton(),
+    CommentRoutes: asFunction(commentRoutes).singleton(),
   })
   .register({
     StatusController: asClass(

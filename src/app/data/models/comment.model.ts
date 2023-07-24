@@ -4,7 +4,7 @@ import { db } from '../../../config/db';
 import { CommentModel } from '../interfaces';
 
 const Comment = db.define<CommentModel>(
-  'users',
+  'comments',
   {
     comment: {
       type: DataTypes.STRING,
