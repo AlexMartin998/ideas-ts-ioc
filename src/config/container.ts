@@ -6,10 +6,10 @@ import {
   StatusController,
   UserController,
 } from '../app/controllers';
-import { Idea, User, Comment } from '../app/data/models';
-import { UserRepository } from '../app/data/repositories';
+import { Comment, Idea, User } from '../app/data/models';
+import { IdeaRepository, UserRepository } from '../app/data/repositories';
 import { appRouter, authRoutes, statusRoutes, userRoutes } from '../app/routes';
-import { AuthService, UserService } from '../app/services';
+import { AuthService, IdeaService, UserService } from '../app/services';
 import { Server } from '../server';
 
 const container = createContainer();
@@ -39,10 +39,12 @@ container
   })
   .register({
     UserRepository: asClass(UserRepository).singleton(),
+    IdeaRepository: asClass(IdeaRepository).singleton(),
   })
   .register({
     UserService: asClass(UserService).singleton(),
     AuthService: asClass(AuthService).singleton(),
+    IdeaService: asClass(IdeaService).singleton(),
   });
 
 export { container };
