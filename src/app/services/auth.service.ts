@@ -1,3 +1,5 @@
+import bcryptjs from 'bcryptjs';
+
 import {
   AlreadyExistsException,
   UnauthorizedException,
@@ -27,7 +29,11 @@ export class AuthService {
 
   async login({ email, password }: LoginDto) {
     const userExist = await this.userService.findOneByEmail(email);
-    if (!userExist?.id || !userExist.comparePassword!(password))
+    const matchPasswords = bcryptjs.compareSync(
+      password,
+      String(userExist?.password)
+    );
+    if (!userExist?.id || !matchPasswords)
       throw new UnauthorizedException(
         'There was a problem logging in. Check your email and password or create an account.'
       );

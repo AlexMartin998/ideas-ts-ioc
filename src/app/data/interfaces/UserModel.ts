@@ -23,5 +23,4 @@ export interface UserModel
   updated_at?: CreationOptional<Date>;
 
   // methods
-  comparePassword?(password: string): boolean;
 }

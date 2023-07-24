@@ -45,10 +45,6 @@ const User = db.define<UserModel>(
 );
 
 // Custom methods
-User.prototype.comparePassword = async function (password: string) {
-  return await bcryptjs.compare(password, this.password);
-};
-
 User.prototype.toJSON = function () {
   const values = Object.assign({}, this.get());
 
