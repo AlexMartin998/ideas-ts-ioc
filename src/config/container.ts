@@ -3,6 +3,7 @@ import { asClass, asFunction, asValue, createContainer } from 'awilix';
 import { config } from '.';
 import {
   AuthController,
+  IdeaController,
   StatusController,
   UserController,
 } from '../app/controllers';
@@ -31,6 +32,7 @@ container
     ).singleton(),
     UserController: asClass(UserController.bind(UserController)).singleton(),
     AuthController: asClass(AuthController.bind(AuthController)).singleton(),
+    IdeaController: asClass(IdeaController.bind(IdeaController)).singleton(),
   })
   .register({
     User: asValue(User),
