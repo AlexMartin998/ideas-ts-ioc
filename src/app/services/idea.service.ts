@@ -29,8 +29,8 @@ export class IdeaService
   }
 
   async findOne(id: number) {
-    const idea = await this.repository.findOne(id);
-    // TODO: get ModelName in BaseService to reuse this validation
+    const idea = await this.ideaRepository.findOneWithAssociations(id);
+    // TODO: get EntityName in BaseService to reuse this validation
     if (!idea) throw new NotFoundException(`Idea with id ${id} not found`);
 
     return idea;

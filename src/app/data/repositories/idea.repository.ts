@@ -37,7 +37,7 @@ export class IdeaRepository
     });
   }
 
-  async findOne(id: number): Promise<IdeaModel | null> {
+  async findOneWithAssociations(id: number): Promise<IdeaModel | null> {
     return this.model.findOne({
       where: { id },
       include: [
