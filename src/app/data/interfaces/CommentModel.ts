@@ -12,6 +12,8 @@ export interface CommentModel
   > {
   id?: CreationOptional<number>;
   comment: string;
+  user_id: number;
+  idea_id: number;
 
   // timestamps
   created_at?: CreationOptional<Date>;
