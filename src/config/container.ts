@@ -8,9 +8,10 @@ import {
   StatusController,
   UserController,
 } from '../app/controllers';
-import { Comment, Idea, User } from '../app/data/models';
+import { Comment, File, Idea, User } from '../app/data/models';
 import {
   CommentRepository,
+  FileRepository,
   IdeaRepository,
   UserRepository,
 } from '../app/data/repositories';
@@ -60,11 +61,13 @@ container
     User: asValue(User),
     Idea: asValue(Idea),
     Comment: asValue(Comment),
+    File: asValue(File),
   })
   .register({
     UserRepository: asClass(UserRepository).singleton(),
     IdeaRepository: asClass(IdeaRepository).singleton(),
     CommentRepository: asClass(CommentRepository).singleton(),
+    FileRepository: asClass(FileRepository).singleton(),
   })
   .register({
     UserService: asClass(UserService).singleton(),

@@ -1,6 +1,7 @@
 export * from './CommentModel';
 export * from './CommentRepository';
 export * from './FileModel';
+export * from './FileRepository';
 export * from './IdeaModel';
 export * from './IdeaRepository';
 export * from './Repository';
