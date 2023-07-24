@@ -22,4 +22,15 @@ const Comment = db.define<CommentModel>(
   }
 );
 
+Comment.prototype.toJSON = function () {
+  const values = Object.assign({}, this.get());
+  values.create_at = values.createdAt;
+  values.updated_at = values.updatedAt;
+
+  delete values.ideaId;
+  delete values.createdAt;
+  delete values.updatedAt;
+  return values;
+};
+
 export default Comment;

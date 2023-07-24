@@ -24,6 +24,8 @@ const Idea = db.define<IdeaModel>(
 
 Idea.prototype.toJSON = function () {
   const values = Object.assign({}, this.get());
+  values.create_at = values.createdAt;
+  values.updated_at = values.updatedAt;
 
   delete values.userId;
   delete values.createdAt;
