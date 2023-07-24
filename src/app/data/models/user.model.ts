@@ -49,4 +49,13 @@ User.prototype.comparePassword = async function (password: string) {
   return await bcryptjs.compare(password, this.password);
 };
 
+User.prototype.toJSON = function () {
+  const values = Object.assign({}, this.get());
+
+  delete values.password;
+  delete values.createdAt;
+  delete values.updatedAt;
+  return values;
+};
+
 export default User;
