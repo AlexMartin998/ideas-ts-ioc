@@ -4,7 +4,7 @@ import { db } from '../../../config/db';
 import { FileModel } from '../interfaces';
 
 const File = db.define<FileModel>(
-  'ideas',
+  'files',
   {
     filename: {
       type: DataTypes.STRING,

@@ -6,6 +6,7 @@ type AppRouterIoC = {
   AuthRoutes: express.Router;
   IdeaRoutes: express.Router;
   CommentRoutes: express.Router;
+  UploadRoutes: express.Router;
 };
 
 export default function ({
@@ -14,6 +15,7 @@ export default function ({
   AuthRoutes,
   IdeaRoutes,
   CommentRoutes,
+  UploadRoutes,
 }: AppRouterIoC) {
   const router = express.Router();
   const apiRoutes = express.Router();
@@ -23,6 +25,7 @@ export default function ({
   apiRoutes.use('/users', UserRoutes);
   apiRoutes.use('/ideas', IdeaRoutes);
   apiRoutes.use('/comments', CommentRoutes);
+  apiRoutes.use('/uploads', UploadRoutes);
 
   router.use('/v1/api', apiRoutes);
 

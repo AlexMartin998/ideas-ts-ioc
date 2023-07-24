@@ -6,6 +6,7 @@ import {
   CommentController,
   IdeaController,
   StatusController,
+  UploadController,
   UserController,
 } from '../app/controllers';
 import { Comment, File, Idea, User } from '../app/data/models';
@@ -21,11 +22,13 @@ import {
   commentRoutes,
   ideaRoutes,
   statusRoutes,
+  uploadRoutes,
   userRoutes,
 } from '../app/routes';
 import {
   AuthService,
   CommentService,
+  FileService,
   IdeaService,
   UserService,
 } from '../app/services';
@@ -45,6 +48,7 @@ container
     AuthRoutes: asFunction(authRoutes).singleton(),
     IdeaRoutes: asFunction(ideaRoutes).singleton(),
     CommentRoutes: asFunction(commentRoutes).singleton(),
+    UploadRoutes: asFunction(uploadRoutes).singleton(),
   })
   .register({
     StatusController: asClass(
@@ -55,6 +59,9 @@ container
     IdeaController: asClass(IdeaController.bind(IdeaController)).singleton(),
     CommentController: asClass(
       CommentController.bind(CommentController)
+    ).singleton(),
+    UploadController: asClass(
+      UploadController.bind(UploadController)
     ).singleton(),
   })
   .register({
@@ -74,6 +81,7 @@ container
     AuthService: asClass(AuthService).singleton(),
     IdeaService: asClass(IdeaService).singleton(),
     CommentService: asClass(CommentService).singleton(),
+    FileService: asClass(FileService).singleton(),
   });
 
 export { container };
