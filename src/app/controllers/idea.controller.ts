@@ -13,6 +13,13 @@ export class IdeaController {
     _ideaService = IdeaService;
   }
 
+  async create(req: Request, res: Response) {
+    const { body } = req;
+    const newIdea = await _ideaService.create(body);
+
+    return res.status(201).json(newIdea);
+  }
+
   async findOne(req: Request, res: Response) {
     const { id } = req.params;
     const user = await _ideaService.findOne(+id);

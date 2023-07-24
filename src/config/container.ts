@@ -9,7 +9,13 @@ import {
 } from '../app/controllers';
 import { Comment, Idea, User } from '../app/data/models';
 import { IdeaRepository, UserRepository } from '../app/data/repositories';
-import { appRouter, authRoutes, statusRoutes, userRoutes } from '../app/routes';
+import {
+  appRouter,
+  authRoutes,
+  ideaRoutes,
+  statusRoutes,
+  userRoutes,
+} from '../app/routes';
 import { AuthService, IdeaService, UserService } from '../app/services';
 import { Server } from '../server';
 
@@ -25,6 +31,7 @@ container
     StatusRoutes: asFunction(statusRoutes).singleton(),
     UserRoutes: asFunction(userRoutes).singleton(),
     AuthRoutes: asFunction(authRoutes).singleton(),
+    IdeaRoutes: asFunction(ideaRoutes).singleton(),
   })
   .register({
     StatusController: asClass(
