@@ -16,6 +16,6 @@ export class IdeaRepository
   }
 
   async findAllByAuthor(authorId: number) {
-    return this.model.findOne({ where: { user_id: authorId } });
+    return this.model.findAll({ where: { user_id: authorId } });
   }
 }
