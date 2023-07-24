@@ -42,6 +42,8 @@ export class Server {
       .use(helmet())
       .use(compression())
       .use(morgan('dev'));
+
+    this.app.use(express.static('public'));
   }
 
   finalMiddlewares() {
