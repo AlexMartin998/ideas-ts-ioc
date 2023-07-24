@@ -13,6 +13,7 @@ export interface IdeaModel
   id?: CreationOptional<number>;
   name: string;
   description: string;
+  user_id: number;
 
   // timestamps
   created_at?: CreationOptional<Date>;

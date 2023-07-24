@@ -6,7 +6,7 @@ import {
   StatusController,
   UserController,
 } from '../app/controllers';
-import { User } from '../app/data/models';
+import { Idea, User, Comment } from '../app/data/models';
 import { UserRepository } from '../app/data/repositories';
 import { appRouter, authRoutes, statusRoutes, userRoutes } from '../app/routes';
 import { AuthService, UserService } from '../app/services';
@@ -34,6 +34,8 @@ container
   })
   .register({
     User: asValue(User),
+    Idea: asValue(Idea),
+    Comment: asValue(Comment),
   })
   .register({
     UserRepository: asClass(UserRepository).singleton(),

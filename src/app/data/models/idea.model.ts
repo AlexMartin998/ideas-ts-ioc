@@ -12,6 +12,9 @@ const Idea = db.define<IdeaModel>(
     description: {
       type: DataTypes.STRING,
     },
+    user_id: {
+      type: DataTypes.NUMBER,
+    },
   },
   {
     timestamps: true,
