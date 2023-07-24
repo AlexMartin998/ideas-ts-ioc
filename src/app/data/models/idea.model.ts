@@ -4,7 +4,7 @@ import { db } from '../../../config/db';
 import { IdeaModel } from '../interfaces';
 
 const Idea = db.define<IdeaModel>(
-  'users',
+  'ideas',
   {
     name: {
       type: DataTypes.STRING,
@@ -21,5 +21,14 @@ const Idea = db.define<IdeaModel>(
     underscored: true,
   }
 );
+
+Idea.prototype.toJSON = function () {
+  const values = Object.assign({}, this.get());
+
+  delete values.userId;
+  delete values.createdAt;
+  delete values.updatedAt;
+  return values;
+};
 
 export default Idea;

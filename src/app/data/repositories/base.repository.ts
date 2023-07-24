@@ -35,4 +35,8 @@ export abstract class BaseRepository<T extends Model> implements Repository<T> {
   async remove(id: number): Promise<number> {
     return this.model.destroy({ where: { id } as any });
   }
+
+  getModel(): ModelStatic<T> {
+    return this.model;
+  }
 }

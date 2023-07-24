@@ -15,7 +15,7 @@ export class IdeaController {
 
   async create(req: Request, res: Response) {
     const { body } = req;
-    const newIdea = await _ideaService.create(body);
+    const newIdea = await _ideaService.createAuthorIdea(body);
 
     return res.status(201).json(newIdea);
   }
@@ -34,15 +34,11 @@ export class IdeaController {
     return res.status(200).json(authorIdeas);
   }
 
-  async findAll(_req: Request, res: Response) {
-    const users = await _ideaService.findAll();
-
-    return res.status(200).json(users);
-  }
-
   async update(req: Request, res: Response) {
     const { body } = req;
     const { id } = req.params;
+    if (body?.user_id) delete body.user_id;
+
     const updatedUser = await _ideaService.update(+id, body);
 
     return res.status(200).json(updatedUser);

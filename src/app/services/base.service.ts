@@ -15,9 +15,9 @@ export abstract class BaseService<T extends Model> implements Service<T> {
     return this.repository.findAll(options);
   }
 
-  async findOne(id: number): Promise<T> {
+  async findOne(id: number): Promise<T | null> {
     const record = await this.repository.findOne(id);
-    if (!record) throw new Error('Record not found');
+    // if (!record) throw new NotFoundException('Record not found');
 
     return record;
   }

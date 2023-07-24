@@ -17,6 +17,7 @@ const protectWithJwt: RequestHandler = async (req, res, next) => {
     const { id } = jwt.verify(tokenJwt, config.JWT_SECRET) as { id: number };
     const userService: IUsersService = container.resolve('UserService');
     const user = await userService.findOne(id);
+    if (!user) throw Error();
 
     req.user = user;
 
