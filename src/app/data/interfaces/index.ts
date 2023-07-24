@@ -1,3 +1,4 @@
+export * from './CommentModel';
 export * from './IdeaModel';
 export * from './Repository';
 export * from './UserModel';
