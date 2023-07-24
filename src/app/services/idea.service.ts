@@ -1,3 +1,4 @@
+import { NotFoundException } from '../../exceptions';
 import { IIdeaRepository, IdeaDto, IdeaModel } from '../data/interfaces';
 import { BaseService } from './base.service';
 import { IIdeaService, IUsersService } from './interfaces';
@@ -25,6 +26,14 @@ export class IdeaService
     await this.userService.findOne(user_id);
 
     return this.repository.create(ideaDto);
+  }
+
+  async findOne(id: number) {
+    const idea = await this.repository.findOne(id);
+    // TODO: get ModelName in BaseService to reuse this validation
+    if (!idea) throw new NotFoundException(`Idea with id ${id} not found`);
+
+    return idea;
   }
 
   async findAllByAuthor(authorId: number): Promise<IdeaModel[]> {
