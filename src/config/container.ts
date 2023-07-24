@@ -8,7 +8,11 @@ import {
   UserController,
 } from '../app/controllers';
 import { Comment, Idea, User } from '../app/data/models';
-import { IdeaRepository, UserRepository } from '../app/data/repositories';
+import {
+  CommentRepository,
+  IdeaRepository,
+  UserRepository,
+} from '../app/data/repositories';
 import {
   appRouter,
   authRoutes,
@@ -16,7 +20,12 @@ import {
   statusRoutes,
   userRoutes,
 } from '../app/routes';
-import { AuthService, IdeaService, UserService } from '../app/services';
+import {
+  AuthService,
+  CommentService,
+  IdeaService,
+  UserService,
+} from '../app/services';
 import { Server } from '../server';
 
 const container = createContainer();
@@ -49,11 +58,13 @@ container
   .register({
     UserRepository: asClass(UserRepository).singleton(),
     IdeaRepository: asClass(IdeaRepository).singleton(),
+    CommentRepository: asClass(CommentRepository).singleton(),
   })
   .register({
     UserService: asClass(UserService).singleton(),
     AuthService: asClass(AuthService).singleton(),
     IdeaService: asClass(IdeaService).singleton(),
+    CommentService: asClass(CommentService).singleton(),
   });
 
 export { container };
