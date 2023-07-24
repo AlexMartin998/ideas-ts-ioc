@@ -9,7 +9,7 @@ import { IUsersService } from '../services';
 const protectWithJwt: RequestHandler = async (req, res, next) => {
   const bearerToken = req.header('Authorization');
   if (!bearerToken || !bearerToken.startsWith('Bearer'))
-    return res.status(401).json({ message: ['Invalid token'] });
+    return res.status(401).json({ messages: ['Unauthorized'] });
 
   const tokenJwt = bearerToken.split(' ')[1];
 
@@ -25,7 +25,7 @@ const protectWithJwt: RequestHandler = async (req, res, next) => {
   } catch (error) {
     Logger.error('Error while creating the JWT');
     Logger.error(JSON.stringify(error));
-    return res.status(401).json({ message: ['Invalid token'] });
+    return res.status(401).json({ message: ['Unauthorized'] });
   }
 };
 
