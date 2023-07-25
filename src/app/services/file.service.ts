@@ -1,4 +1,4 @@
-import { IFileRepository, FileModel } from '../data/interfaces';
+import { FileDto, FileModel, IFileRepository } from '../data/interfaces';
 import { BaseService } from './base.service';
 import { IFileService } from './interfaces';
 
@@ -17,8 +17,9 @@ export class FileService
     this.fileRepository = FileRepository;
   }
 
-  async saveInLocal(): Promise<string> {
-		
-    return '';
+  async saveInLocal(file: FileDto): Promise<string> {
+    const fileStored = await this.repository.create(file);
+
+    return fileStored.filename;
   }
 }

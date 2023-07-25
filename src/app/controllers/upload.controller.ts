@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 
+import { FileDto } from '../data/interfaces';
 import { IFileService } from '../services/interfaces';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 let _fileService: IFileService;
 
 type UploadControllerIoC = {
@@ -15,8 +15,11 @@ export class UploadController {
   }
 
   async saveInLocal(req: Request, res: Response) {
-    const { file } = req;
+    const { filename, mimetype } = req.file as Express.Multer.File;
+    const fileDto = { filename, mimetype } as FileDto;
 
-    return res.status(201).json({ file_name: file?.filename });
+    const fileName = await _fileService.saveInLocal(fileDto);
+
+    return res.status(201).json({ file_name: fileName });
   }
 }
