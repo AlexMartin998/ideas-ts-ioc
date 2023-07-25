@@ -11,6 +11,7 @@ export default function ({ UploadController }: UsersRoutesIoC) {
   const router = Router();
 
   router.post('', [uploadFiles.single('file')], UploadController.saveInLocal);
+  router.get('/:id', UploadController.serveFile);
 
   return router;
 }

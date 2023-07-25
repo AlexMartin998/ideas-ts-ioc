@@ -12,6 +12,9 @@ const File = db.define<FileModel>(
     mimetype: {
       type: DataTypes.STRING,
     },
+    file_path: {
+      type: DataTypes.STRING,
+    },
   },
   {
     timestamps: true,

@@ -13,6 +13,7 @@ export interface FileModel
   id?: CreationOptional<number>;
   filename: string;
   mimetype: string;
+  file_path: string;
 
   // timestamps
   created_at?: CreationOptional<Date>;

@@ -15,11 +15,23 @@ export class UploadController {
   }
 
   async saveInLocal(req: Request, res: Response) {
-    const { filename, mimetype } = req.file as Express.Multer.File;
-    const fileDto = { filename, mimetype } as FileDto;
+    const {
+      filename,
+      mimetype,
+      path: filePath,
+    } = req.file as Express.Multer.File;
+    const fileDto = { filename, mimetype, file_path: filePath } as FileDto;
 
     const fileName = await _fileService.saveInLocal(fileDto);
 
     return res.status(201).json({ file_name: fileName });
+  }
+
+  async serveFile(req: Request, res: Response) {
+    const { id } = req.params;
+
+    const filePath = await _fileService.findFilePath(+id);
+
+    return res.status(200).sendFile(filePath);
   }
 }
