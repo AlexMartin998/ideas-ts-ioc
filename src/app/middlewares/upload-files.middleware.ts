@@ -4,7 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { BadRequestException } from '../../exceptions';
 
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, './../../../public/uploads'),
+  // destination: path.join(__dirname, './../../../public/uploads'),
+  destination: path.join(__dirname, './../../uploads'),
   filename: (req, file, cb) => {
     cb(null, (uuidv4() + path.extname(file.originalname)).toLocaleLowerCase());
   },
